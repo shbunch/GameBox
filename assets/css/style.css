@@ -24,3 +24,24 @@ header{
 form{
     width: 25%;
 }
+#chartsection{
+    padding-bottom: 1.8%;
+}
+main{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 3%;
+    height: 900px;
+}
+i{
+    font-family: 'Martian Mono';
+    border: solid 2px;
+    background-color: white;
+    border-radius: 10px;
+    transform: skew(-15deg, 0deg);
+}
+i:hover{
+    transform: skew(5deg, 0deg);
+    cursor: pointer;
+
+}
