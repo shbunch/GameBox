@@ -1,16 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/normalize.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Document</title>
+    <title>project-1</title>
 </head>
+
 <body>
-    
+    <header class="is-flex is-flex-direction-row is-justify-content-space-between has-background-grey-light p-5">
+        <h1 class="has-text-white">project-1</h1>
+        <form id="form" role="search" class="is-flex is-flex-direction-row is-justify-content-space-between mb-2">
+            <input action="search" id="query" name="q" placeholder="Search Games..." class="mr-2">
+            <button id="SearchBtn" value="input" class="has-background-danger px-3">Search</button>
+        </form>
+    </header>
+    <main>
+        <section class="columns">
+            <section class="column is-one-quarter">
+                <h1>hello world</h1>
+            </section>
+            <section class="column is-half">
+
+                <div class="tile is-6 is-parent">
+                    <article class="tile is-child notification is-danger">
+                        <p class="title">Video Game Title</p>
+                        <p class="subtitle">Released:</p>
+                        <div class="content ">
+                            <article class="tile is-child notification is-primary">
+                                <p class="title">Description:</p>
+                                <p class="subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                    Velit beatae consequuntur suscipit qui alias doloribus expedita, 
+                                    est odit optio esse reprehenderit voluptas similique nam modi consequatur iusto possimus nisi labore.</p>
+                            </article>
+                        </div>
+                    </article>
+                    
+            </section>
+            <section class="column is-one-quarter">
+                <h1>hello world</h1>
+            </section>
+        </section>
+    </main>
 </body>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="./assets/js/script.js"></script>
+
 </html>

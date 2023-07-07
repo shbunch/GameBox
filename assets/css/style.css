@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+header{
+    width: 100%;
+}
+#query{
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 5px;
+  border: 0.5px solid black;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 3%;
+  width: 100%;
+}
+#SearchBtn{
+  border: none;
+  color: azure;
+  border-radius: 5px;
+}
+form{
+    width: 25%;
+}
