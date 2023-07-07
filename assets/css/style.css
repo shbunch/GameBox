@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+header{
+    width: 100%;
+}
+#query{
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 5px;
+  border: 0.5px solid black;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 3%;
+  width: 100%;
+}
+#SearchBtn{
+  border: none;
+  color: azure;
+  border-radius: 5px;
+}
+form{
+    width: 25%;
+}
+#chartsection{
+    padding-bottom: 1.8%;
+}
+main{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 3%;
+    height: 900px;
+}
+i{
+    font-family: 'Martian Mono';
+    border: solid 2px;
+    background-color: white;
+    border-radius: 10px;
+    transform: skew(-15deg, 0deg);
+}
+i:hover{
+    transform: skew(5deg, 0deg);
+    cursor: pointer;
+
+}
