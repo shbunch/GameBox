@@ -78,9 +78,10 @@
             </section>
             <section id="chartsection" class="column is-one-quarter tile is-ancestor pt-6 is-vertical">
                 <div class="tile is-parent">
-                    <article class="tile is-child notification has-background-primary-light">
+                    <article class="tile is-child notification has-background-black">
                         <div class="content">
                             <p class="title">chart section of the page</p>
+                            <canvas data-aos="flip-left" id="ratingChart"></canvas>
                             <p class="subtitle"></p>
                             <div class="content">
                                 <!-- Content -->
@@ -91,9 +92,10 @@
             </section>
         </section>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="./assets/js/script.js"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 </body>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="./assets/js/script.js"></script>
 
 </html>

@@ -10,7 +10,8 @@ var APIKey = "afe2446d033e4b5197325726cd2f5fb8";
 //     .then(function (data) {
 //         console.log(data);
 //     });
-const ctx = document.getElementById('myChart');
+console.log(APIKey);
+const ctx = document.getElementById('ratingChart');
       
 new Chart(ctx, {
   type: 'bar',
@@ -18,12 +19,12 @@ new Chart(ctx, {
     labels: ['chosen game', 'next best thing', 'Yellow', 'Green', 'Purple', 'Orange'],
     datasets: [{
       label: '# of votes',
-      data: [13, 19, 3, 5, 2, 3],
+      data: [19, 14, 3, 5, 2, 3],
       borderWidth: 2,
-      borderColor: '#ff6384',
-      backgroundColor:'rgb(116, 2, 2)',
+      borderColor: '#f0000080',
+      backgroundColor:'#fff580',
     }]
-    
+   
   },
   options: {
     scales: {
@@ -32,5 +33,6 @@ new Chart(ctx, {
       }
     }
   }
-});
+ });
+ 
 
