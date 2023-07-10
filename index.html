@@ -41,33 +41,35 @@
             <section class="column is-half tile is-ancestor pt-6">
                 <div class="tile is-6 is-parent is-vertical">
                     <article class="tile is-child notification is-danger">
-                        <p class="title" id="vgtitle"></p>
-                        <p class="subtitle" id ="vgdate"></p>
+                        <p class="title" id="vgTitle"></p>
+                        <p class="subtitle" id="releaseDate"></p>
                         <div class="content ">
                             <article class="tile is-child notification is-primary">
-                                <p class="title" >Description:</p>
-                                <p class="subtitle" id="vgdesc"></p>
+                                <p class="title">Description:</p>
+                                <p class="subtitle" id="vgDescription"></p>
                             </article>
                         </div>
                     </article>
-                    <article class="tile is-child notification is-info">
-                        <p class="title">Rating:</p>
-                        <p class="subtitle" id="vgrating"></p>
-                    </article>
-                    <article class="tile is-child notification is-success">
-                        <p class="title">Platforms:</p>
-                        <p class="subtitle" id="vgplatforms"></p>
-                    </article>
+
                 </div>
-                <div class="tile is-parent">
-                    <article class="tile is-child notification has-background-grey-lighter" id="vgimgcontainer">
-                        <div class="content">
-                            <div class="content" id="vgimages">
-                            <!-- Content -->
-                                
+                <div class="tile is-6 is-parent is-vertical">
+                    <div class="tile is-child is-vertical">
+                        <article class="tile is-child notification is-info">
+                            <p class="title">Rating:</p>
+                            <p class="subtitle" id="vgRating"></p>
+                        </article>
+                        <article class="tile is-child notification is-success" id="vgPlatformscontainer">
+                            <p class="title">Platforms:</p>
+                            <p class="subtitle" id="vgPlatforms"></p>
+                        </article>
+                        <article class="tile is-child notification has-background-grey-lighter" id="vgimgcontainer">
+                            <div class="content">
+                                <div class="content" id="vgImages">
+                                    <!-- Content -->
+                                </div>
                             </div>
-                        </div>
-                    </article>
+                        </article>
+                    </div>
                 </div>
             </section>
             <section id="chartsection" class="column is-one-quarter tile is-ancestor pt-6 is-vertical">
@@ -85,11 +87,11 @@
             </section>
         </section>
         <div id="modalWindow" style="display: none;">
-              <div class = "modalcontent">
+            <div class="modalcontent">
                 <p>Please Try Again! Current name not found.</p>
-                <span id = "xbtn" onclick="hideModal()">&#10006;</span>
-              </div>
-          </div>
+                <span id="xbtn" onclick="hideModal()">&#10006;</span>
+            </div>
+        </div>
     </main>
 
 
