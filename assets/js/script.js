@@ -23,6 +23,7 @@ function searchGame(event) {
     event.preventDefault();
     // Collect user input for the game search and store it in a variable
     var game = document.querySelector("#query").value
+    console.log(game);
     
     // TODO - Loop through fullGameList object and check for match with user input
 }
