@@ -41,13 +41,22 @@ function searchGame(inputVal) {
         if(data.redirect === true){
            showModal();
         }
-        var genreURL = 'https://api.rawg.io/api/games'  + '?key=' + rawgAPIKey+ '&genres='+ data.genres[0].id;
+        var genreString ="";
+        for(i = 0; i < data.genres.length; i++){
+            console.log(data.genres[i].id);
+            genreString+= (data.genres[i].id + ",")
+        }
+        genreString = genreString.slice(0, -1);
+        console.log(genreString);
+        var genreURL = 'https://api.rawg.io/api/games'  + '?key=' + rawgAPIKey+ '&genres='+ genreString;
         fetch(genreURL)
         .then(function(res){
             return res.json();
         })
         .then(function(ratingData){
             console.log(ratingData);
+
+            
         })
     }); // TODO - Loop through fullGameList object and check for match with user input
 
