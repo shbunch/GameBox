@@ -145,6 +145,9 @@ new Chart(ctx, {
     },
   },
 });
+
+
+
 const ctx1 = document.getElementById("popChart");
 
 const chart = new Chart(ctx1, {
@@ -182,4 +185,4 @@ const chart = new Chart(ctx1, {
           }
       }
   }
-);
+)}
