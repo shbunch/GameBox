@@ -15,7 +15,7 @@
     <title>GameBox</title>
 </head>
 
-<body>
+<body onload="pageLoad()">
     <header class="is-flex is-flex-direction-row is-justify-content-space-between has-background-grey-light p-5">
         <i class="has-text-weight-bold p-2 has-text-danger">GameBox</i>
         <form id="form" role="search" class="is-flex is-flex-direction-row is-justify-content-space-between mb-2">
@@ -41,36 +41,30 @@
             <section class="column is-half tile is-ancestor pt-6">
                 <div class="tile is-6 is-parent is-vertical">
                     <article class="tile is-child notification is-danger">
-                        <p class="title">Video Game Title</p>
-                        <p class="subtitle">Released:</p>
+                        <p class="title" id="vgtitle"></p>
+                        <p class="subtitle" id ="vgdate"></p>
                         <div class="content ">
                             <article class="tile is-child notification is-primary">
-                                <p class="title">Description:</p>
-                                <p class="subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Velit beatae consequuntur suscipit qui alias doloribus expedita,
-                                    est odit optio esse reprehenderit voluptas similique nam modi consequatur iusto
-                                    possimus nisi labore.</p>
+                                <p class="title" >Description:</p>
+                                <p class="subtitle" id="vgdesc"></p>
                             </article>
                         </div>
                     </article>
                     <article class="tile is-child notification is-info">
                         <p class="title">Rating:</p>
-                        <p class="subtitle">insert rating from data here</p>
+                        <p class="subtitle" id="vgrating"></p>
                     </article>
                     <article class="tile is-child notification is-success">
                         <p class="title">Platforms:</p>
-                        <p class="subtitle">insert rating from data here</p>
+                        <p class="subtitle" id="vgplatforms"></p>
                     </article>
                 </div>
                 <div class="tile is-parent">
-                    <article class="tile is-child notification has-background-grey-lighter">
+                    <article class="tile is-child notification has-background-grey-lighter" id="vgimgcontainer">
                         <div class="content">
-                            <p class="title">Image section</p>
-                            <p class="subtitle">Image from data goes here this is just a
-                                rough draft of the layout
-                            </p>
-                            <div class="content">
-                                <!-- Content -->
+                            <div class="content" id="vgimages">
+                            <!-- Content -->
+                                
                             </div>
                         </div>
                     </article>
