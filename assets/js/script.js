@@ -13,9 +13,6 @@ function showModal(){
 function hideModal(){
     modalWindow.style.display = 'none';
 }
-var xBtn = document.getElementById('modalX');
-// xBtn.addEventListener("click", hideModal);
-
 var rawgAPIKey = "9291f496b0954cfd85fdd080b9cd538f";
 
 var input = document.getElementById('query');
@@ -44,7 +41,7 @@ function searchGame(inputVal) {
         if(data.redirect === true){
            showModal();
         }
-        var genreURL = 'https://api.rawg.io/api/' + data.genre;
+        var genreURL = 'https://api.rawg.io/api/games'  + '?key=' + rawgAPIKey+ '&genres='+ data.genres[0].id;
         fetch(genreURL)
         .then(function(res){
             return res.json();
