@@ -1,4 +1,4 @@
-var rawgAPIKey = "afe2446d033e4b5197325726cd2f5fb8";
+var rawgAPIKey = "9291f496b0954cfd85fdd080b9cd538f";
 var fullGameList = "https://api.rawg.io/api/games?key=" + rawgAPIKey;
 
 // ? Sample RAWG API links for reference
@@ -9,6 +9,7 @@ var fullGameList = "https://api.rawg.io/api/games?key=" + rawgAPIKey;
 // clear input field for more searches
 // var rawgKey ='9291f496b0954cfd85fdd080b9cd538f' this is ryans api key;
 // var rawgKey ='5e68bfa8ec8141a990c74c4ebefb01ea' this is shawns api key;
+// var rawgKey ='afe2446d033e4b5197325726cd2f5fb8' this is brandons api key;
 var modalWindow = document.getElementById("modalWindow");
 function showModal() {
   modalWindow.style.display = "block";
@@ -442,9 +443,13 @@ function renderWishlist() {
     var li = document.createElement("li");
     li.textContent = wishlistGame;
     li.setAttribute("data-index", i);
+    li.setAttribute("style","list-style-type: none; margin-right: 1%; margin-bottom: 4%; background-color: hsl(204, 86%, 53%); width: 75%; color: white; border-radius: 2px; padding: 3%; display: flex; justify-content: space-between;");
 
     var removeButton = document.createElement("button");
-    removeButton.textContent = "Remove";
+    removeButton.setAttribute("style", "margin-left: 1%; background-color: hsl(348, 100%, 61%); border: 1px solid rgba(255, 182, 182, 0.534); padding: 1%; display: flex; height: 25px;");
+    // removeButton.style.borderHover = "none";
+    removeButton.setAttribute("class", "removebuttonstyle fa fa-remove");
+    removeButton.textContent = "";
     // .class.add bulma css class here
     removeButton.dataset.game = wishlistGame;
     removeButton.addEventListener("click", function (event) {
@@ -456,7 +461,16 @@ function renderWishlist() {
       localStorage.setItem("wishlist", JSON.stringify(updatedWishlist))
       renderWishlist();
     })
-
+    removeButton.addEventListener("mouseover", function(event){
+      if(event.target.classList.contains("removebuttonstyle")){
+        event.target.setAttribute("style", "margin-left: 1%; background-color: hsl(348, 100%, 61%); border: none; padding: 1%; cursor: pointer; display: flex; height: 25px;");
+      }
+    });
+    removeButton.addEventListener("mouseout", function(event){
+      if(event.target.classList.contains("removebuttonstyle")){
+        event.target.setAttribute("style", "margin-left: 1%; background-color: hsl(348, 100%, 61%); border: 1px solid rgba(255, 182, 182, 0.534); padding: 1%; height: 25px;");
+      }
+    });
     li.appendChild(removeButton);
     wishlist.appendChild(li);
   }
