@@ -37,6 +37,7 @@ function pageLoad() {
     .then(function (pageLoadData) {
       console.log(pageLoadData);
       var videoGameTitle = document.querySelector("#vgTitle");
+      saveEl.setAttribute("data-game", pageLoadData.name);
       var videoGameDesc = document.querySelector("#vgDescription");
       var videoGameDate = document.querySelector("#releaseDate");
       var videoGameRating = document.querySelector("#vgRating");
@@ -306,7 +307,7 @@ function renderWishlist() {
     li.setAttribute("data-index", i);
 
     var removeButton = document.createElement("button");
-    removeButton.textContent = "Remove";
+    removeButton.textContent = "-";
     // .class.add bulma css class here
     removeButton.dataset.game = wishlistGame;
     removeButton.addEventListener("click", function (event) {
