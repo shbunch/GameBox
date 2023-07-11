@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    
   }
 header{
     width: 100%;
@@ -97,3 +98,10 @@ i:hover{
     align-items: center;
   } */
 
+  #ratingChart {
+    background-color: rgb(250, 6, 6);
+    color: rgb(0, 0, 0);
+} */
+/* #popChart {
+  color: rgb(212, 6, 6);
+  /* background-color: rgb(11, 228, 65);
