@@ -127,3 +127,10 @@ i:hover{
       display: block;
     }
   }
+  #ratingChart {
+    background-color: rgb(250, 6, 6);
+    color: rgb(0, 0, 0);
+}
+/* #popChart {
+  color: rgb(212, 6, 6);
+  /* background-color: rgb(11, 228, 65);
