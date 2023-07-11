@@ -108,14 +108,14 @@ i:hover{
   #vgDescription{
     font-size: 95%;
   }
-  #savebtn{
+  #saveBtn{
     border: 2.5px solid rgba(255, 182, 182, 0.534);
     font-family: 'Martian Mono';
     font-weight: 600;
     color: white;
     width: 325px;
   }
-  #savebtn:hover{
+  #saveBtn:hover{
     border: none;
   }
   #saveform{
