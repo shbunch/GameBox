@@ -87,10 +87,6 @@ if (chartStatus != undefined) {
   chartStatus.destroy();
 }
 
-
-
-
-
 new Chart(ctx, {
   type: "bar",
   data: {
@@ -140,8 +136,6 @@ new Chart(ctx, {
    
   },
 });
-
-
 
 const ctx1 = document.getElementById("popChart");
 
@@ -266,11 +260,7 @@ function storeWishlist(game) {
 }
 
 
-
-
-//* Move save to wishlist button over to the image section
 // Have the button only show up when the search is run
-//* Create wishlist array
 
 // Add event listener to Search button element
 searchEl.addEventListener("click", searchBar);
