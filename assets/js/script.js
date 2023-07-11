@@ -93,7 +93,7 @@ new Chart(ctx, {
     ],
     datasets: [
       {
-        label: "# of votes",
+        label: "Rating",
         data: [gameRating1, gameRating2, gameRating3, gameRating4, gameRating5],
         borderWidth: 2,
         backgroundColor:'rgb(250, 6, 6)',
@@ -101,12 +101,12 @@ new Chart(ctx, {
     ],
   },
   options: {
-    animations:{
+    animation:{
       borderWidth: {
         duration:1000,
         easing:'linear',
         to:1,
-        from:10,
+        from:5,
         loop:true,
       }
     },
@@ -152,9 +152,9 @@ new Chart(ctx1, {
     ],
     datasets: [
       {
-        label: "# of votes",
+        label: "Rating",
         data: [gameRating1, gameRating2, gameRating3, gameRating4, gameRating5],
-        borderWidth: 2,
+        borderWidth: 5,
         backgroundColor: 'rgb(250, 6, 6)',
       },
     ],
@@ -162,10 +162,10 @@ new Chart(ctx1, {
   options: {
     animations: {
       tension: {
-        duration: 800,
+        duration: 1000,
         easing: 'linear',
         from: 1,
-        to: 5,
+        to: 2,
         loop: true
       }
     },
