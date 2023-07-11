@@ -1,4 +1,4 @@
-var rawgAPIKey = "afe2446d033e4b5197325726cd2f5fb8";
+var rawgAPIKey = "9291f496b0954cfd85fdd080b9cd538f";
 var fullGameList = "https://api.rawg.io/api/games?key=" + rawgAPIKey;
 
 // ? Sample RAWG API links for reference
@@ -9,6 +9,7 @@ var fullGameList = "https://api.rawg.io/api/games?key=" + rawgAPIKey;
 // clear input field for more searches
 // var rawgKey ='9291f496b0954cfd85fdd080b9cd538f' this is ryans api key;
 // var rawgKey ='5e68bfa8ec8141a990c74c4ebefb01ea' this is shawns api key;
+// var rawgKey ='afe2446d033e4b5197325726cd2f5fb8' this is brandons api key;
 var modalWindow = document.getElementById("modalWindow");
 function showModal() {
   modalWindow.style.display = "block";
