@@ -17,6 +17,7 @@ function hideModal() {
   modalWindow.style.display = "none";
 }
 
+var saveEl = document.getElementById("saveBtn");
 var input = document.getElementById("query");
 function searchBar(event) {
   event.preventDefault();
@@ -246,13 +247,13 @@ function searchGame(inputVal) {
       var videoGameTitle = document.querySelector("#vgTitle");
       videoGameTitle.textContent = data.name;
       var videoGameRelease = document.querySelector("#releaseDate");
-      videoGameRelease.textContent = 'Released:' +  data.released;
+      videoGameRelease.textContent = 'Released:' + data.released;
       var videoGameDescription = document.querySelector("#vgDescription");
       videoGameDescription.textContent = data.description_raw;
       // rating
       var videoGameRating = document.querySelector("#vgRating");
       videoGameRating.textContent = data.esrb_rating.name;
-      if(data.esrb_rating.name === null){
+      if (data.esrb_rating.name === null) {
         videoGameRating.textContent = '';
       }
       // platforms
@@ -265,7 +266,7 @@ function searchGame(inputVal) {
       console.log(platformsString);
       videoGamePlatforms.textContent = platformsString;
       // image
-      
+
       var videoGameContainer = document.getElementById("vgImages");
       var videoGameImage = document.createElement("img");
       videoGameContainer.appendChild(videoGameImage);
@@ -299,179 +300,198 @@ function searchGame(inputVal) {
           var game4 = ratingData.results[3].name;
           var game5 = ratingData.results[4].name;
 
-          var gameRating1 =data.rating;
-          var gameRating2 =ratingData.results[0].rating;
-          var gameRating3 =ratingData.results[1].rating;
-          var gameRating4 =ratingData.results[2].rating;
-          var gameRating5 =ratingData.results[3].rating;
+          var gameRating1 = data.rating;
+          var gameRating2 = ratingData.results[0].rating;
+          var gameRating3 = ratingData.results[1].rating;
+          var gameRating4 = ratingData.results[2].rating;
+          var gameRating5 = ratingData.results[3].rating;
 
           const ctx = document.getElementById("ratingChart");
-// destroy chart code
-var chartStatus = Chart.getChart("ratingChart"); // <canvas> id
-if (chartStatus != undefined) {
-chartStatus.destroy();
+          // destroy chart code
+          var chartStatus = Chart.getChart("ratingChart"); // <canvas> id
+          if (chartStatus != undefined) {
+            chartStatus.destroy();
+          }
+
+          new Chart(ctx, {
+            type: "bar",
+            data: {
+              labels: [
+                game1,
+                game2,
+                game3,
+                game4,
+                game5,
+              ],
+              datasets: [
+                {
+                  label: 'Rating',
+
+
+                  data: [gameRating1, gameRating2, gameRating3, gameRating4, gameRating5],
+                  borderWidth: 2,
+                  backgroundColor: 'rgb(250, 6, 6)',
+                },
+              ],
+            },
+            options: {
+              animation: {
+                borderWidth: {
+                  duration: 1000,
+                  easing: 'linear',
+                  to: 1,
+                  from: 5,
+                  loop: true,
+                }
+              },
+              animations: {
+                backgroundColor: {
+                  type: 'color',
+                  duration: 1000,
+                  easing: 'linear',
+                  to: 'blue',
+                  from: 'red',
+                  loop: true
+                }
+              },
+              scales: {
+                y: {
+                  beginAtZero: true,
+                },
+              },
+
+            },
+          });
+
+          const ctx1 = document.getElementById("popChart");
+
+          // destroy chart code
+          var chartStatus = Chart.getChart("popChart"); // <canvas> id
+          if (chartStatus != undefined) {
+            chartStatus.destroy();
+          }
+
+          new Chart(ctx1, {
+
+            type: 'line',
+            data: {
+              labels: [
+                game1,
+                game2,
+                game3,
+                game4,
+                game5,
+              ],
+              datasets: [
+                {
+
+                  label: 'Rating',
+                  data: [gameRating1, gameRating2, gameRating3, gameRating4, gameRating5],
+                  borderWidth: 5,
+                  backgroundColor: 'rgb(250, 6, 6)',
+                },
+
+              ],
+            },
+            options: {
+              animation: {
+                tension: {
+                  duration: 1000,
+                  easing: 'linear',
+                  from: 1,
+                  to: 2,
+                  loop: true
+                },
+                backgroundColor: {
+                  type: 'color',
+                  duration: 1000,
+                  easing: 'linear',
+                  to: 'blue',
+                  from: 'red',
+                  loop: true
+                }
+              },
+
+              scales: {
+                y: { // defining min and max so hiding the dataset does not change scale range
+                  min: 0,
+                  max: 5
+                }
+              }
+            }
+          })
+        }
+      )
+    })
 }
+// The following function renders items in a todo list as <li> elements
+function renderWishlist() {
+  // Clear wishlist element and update wishlist count
+  wishlist.innerHTML = "";
+  var wishlistArray = JSON.parse(localStorage.getItem("wishlist")) || []
+  wishlistCount.textContent = wishlistArray.length;
 
+  // Render a new li for each wishlist item
+  for (var i = 0; i < wishlistArray.length; i++) {
+    var wishlistGame = wishlistArray[i];
 
+    var li = document.createElement("li");
+    li.textContent = wishlistGame;
+    li.setAttribute("data-index", i);
 
+    var removeButton = document.createElement("button");
+    removeButton.textContent = "Remove";
+    // .class.add bulma css class here
+    removeButton.dataset.game = wishlistGame;
+    removeButton.addEventListener("click", function (event) {
+      var gameTitle = event.target.getAttribute("data-game")
+      var wishlistArray = JSON.parse(localStorage.getItem("wishlist")) || []
+      var updatedWishlist = wishlistArray.filter(function (game) {
+        return game !== gameTitle
+      })
+      localStorage.setItem("wishlist", JSON.stringify(updatedWishlist))
+      renderWishlist();
+    })
 
-
-new Chart(ctx, {
-type: "bar",
-data: {
-  labels: [
-    game1,
-    game2,
-    game3,
-    game4,
-    game5,
-  ],
-  datasets: [
-    {
-      label: 'Rating',
-
-      
-      data: [gameRating1, gameRating2, gameRating3, gameRating4, gameRating5],
-      borderWidth: 2,
-      backgroundColor:'rgb(250, 6, 6)',
-    },
-  ],
-},
-options: {
-  animation:{
-    borderWidth: {
-      duration:1000,
-      easing:'linear',
-      to:1,
-      from:5,
-      loop:true,
-    }
-  },
-  animations:{
-    backgroundColor: {
-      type: 'color',
-      duration:1000,
-      easing:'linear',
-      to:'blue',
-      from:'red',
-      loop:true
-    }
-  },
-  scales: {
-    y: {
-      beginAtZero: true,
-    },
-  },
- 
-},
-});
-
-
-
-const ctx1 = document.getElementById("popChart");
-
-// destroy chart code
-var chartStatus = Chart.getChart("popChart"); // <canvas> id
-if (chartStatus != undefined) {
-chartStatus.destroy();
-}
-
-new Chart(ctx1, {
-
-type: 'line',
-data: {
-  labels: [
-    game1,
-    game2,
-    game3,
-    game4,
-    game5,
-  ],
-  datasets: [
-    {
-      
-      label: 'Rating',
-      data: [gameRating1, gameRating2, gameRating3, gameRating4, gameRating5],
-      borderWidth: 5,
-      backgroundColor: 'rgb(250, 6, 6)',
-    },
-    
-  ],
-},
-options: {
-  animation: {
-    tension: {
-      duration: 1000,
-      easing: 'linear',
-      from: 1,
-      to: 2,
-      loop: true
-    },
-    backgroundColor: {
-      type: 'color',
-      duration:1000,
-      easing:'linear',
-      to:'blue',
-      from:'red',
-      loop:true
-    }
-  },
- 
-  scales: {
-    y: { // defining min and max so hiding the dataset does not change scale range
-      min: 0,
-      max: 5
-    }
+    li.appendChild(removeButton);
+    wishlist.appendChild(li);
   }
 }
-});
-        });
-    }); // TODO - Loop through fullGameList object and check for match with user input
+
+// This function is being called below and will run when the page loads.
+function init() {
+  // Get stored wishlist items from localStorage
+  var wishlistItems = JSON.parse(localStorage.getItem("wishlist"));
+
+  // If wishlist were retrieved from localStorage, update the wishlist array to it
+  if (wishlistItems !== null) {
+    wishlistArray = wishlistItems;
+  }
+
+  // This is a helper function that will render wishlist to the DOM
+  renderWishlist();
 }
+
+function storeWishlist(game) {
+  // Stringify and set key in localStorage to wishlist array
+  var wishlistItems = JSON.parse(localStorage.getItem("wishlist")) || []
+  if (!wishlistItems.includes(game)) {
+    wishlistItems.push(game)
+    localStorage.setItem("wishlist", JSON.stringify(wishlistItems))
+    renderWishlist()
+  }
+}
+
+
+// Have the button only show up when the search is run
+
 // Add event listener to Search button element
 searchEl.addEventListener("click", searchBar);
+saveEl.addEventListener("click", function (event) {
+  event.preventDefault();
 
-// var input = document.getElementById("query");
-
-// function SearchBar(event) {
-//   event.preventDefault();
-//   var inputVal = input.value;
-//   searchGame(inputVal);
-  // 
-//     // List of games object on console log
-    
-
-
-
-//   // Targeting Search button element
-  // var searchEl = document.querySelector("#SearchBtn");
-
-//   // ! Code that runs when Search button is pressed (almost all code should go here)
-//   function searchGame(inputVal) {
-   
-//     // Collect user input for the game search and store it in a variable
-//     // resltus.length = new data (50000);
-
-  
-//     // resizing function for datas
-
-
-//   // Add event listener to Search button element
-//   searchEl.addEventListener("click", SearchBar);
-
-  // fetch(fullGameList)
-  // .then(function (res) {
-  //   return res.json();
-  // })
-  // .then(function (data) {
-  //   // if (data.redirect === true) {
-  //   //   alert: "no game found";
-  //   // }
-  //   console.log(data);
-  //   console.log(fullGameList);
-  // });
-// }
-
-
+  var wishlistText = event.target.getAttribute("data-game")
+  storeWishlist(wishlistText)
+});
 
 
