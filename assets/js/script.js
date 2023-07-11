@@ -93,7 +93,9 @@ new Chart(ctx, {
     ],
     datasets: [
       {
-        label: "Rating",
+        label: game1,
+
+        
         data: [gameRating1, gameRating2, gameRating3, gameRating4, gameRating5],
         borderWidth: 2,
         backgroundColor:'rgb(250, 6, 6)',
@@ -152,7 +154,32 @@ new Chart(ctx1, {
     ],
     datasets: [
       {
-        label: "Rating",
+        label: game1,
+        
+        data: [gameRating1, gameRating2, gameRating3, gameRating4, gameRating5],
+        borderWidth: 5,
+        backgroundColor: 'rgb(250, 6, 6)',
+      },
+      {
+        label: game2,
+        data: [gameRating1, gameRating2, gameRating3, gameRating4, gameRating5],
+        borderWidth: 3,
+        backgroundColor: 'rgb(250, 6, 6)',
+      },
+      {
+        label: game3,
+        data: [gameRating1, gameRating2, gameRating3, gameRating4, gameRating5],
+        borderWidth: 5,
+        backgroundColor: 'rgb(250, 6, 6)',
+      },
+      {
+        label: game4,
+        data: [gameRating1, gameRating2, gameRating3, gameRating4, gameRating5],
+        borderWidth: 5,
+        backgroundColor: 'rgb(250, 6, 6)',
+      },
+      {
+        label: game5,
         data: [gameRating1, gameRating2, gameRating3, gameRating4, gameRating5],
         borderWidth: 5,
         backgroundColor: 'rgb(250, 6, 6)',
