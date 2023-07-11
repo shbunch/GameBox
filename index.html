@@ -12,6 +12,7 @@
         href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100;200;300;400;500;600;700;800&family=Permanent+Marker&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>GameBox</title>
 </head>
@@ -28,7 +29,7 @@
         <section class="columns">
             <section class="column is-one-quarter tile is-ancestor pt-6 is-vertical">
                 <div class="tile is-parent">
-                    <article class="tile is-child notification has-background-primary-light">
+                    <article data-aos="flip-right" class="tile is-child notification has-background-warning">
                         <div class="content">
                             <p class="title">Wishlist Items</p>
                             <p class="subtitle">dynamic buttons will be made in here</p>
@@ -40,7 +41,7 @@
             </section>
             <section class="column is-half tile is-ancestor pt-6">
                 <div class="tile is-6 is-parent is-vertical">
-                    <article class="tile is-child notification is-danger">
+                    <article class="tile is-child notification is-danger"data-aos="fade-down-left">
                         <p class="title" id="vgTitle"></p>
                         <p class="subtitle" id="releaseDate"></p>
                         <div class="content ">
@@ -54,26 +55,27 @@
                 </div>
                 <div class="tile is-6 is-parent is-vertical">
                     <div class="tile is-child is-vertical">
-                        <article class="tile is-child notification is-info">
+                        <article data-aos="fade-up-right" class="tile is-child notification is-info">
                             <p class="title">Rating:</p>
                             <p class="subtitle" id="vgRating"></p>
                         </article>
-                        <article class="tile is-child notification is-success" id="vgPlatformscontainer">
+                        <article data-aos="fade-up-left" class="tile is-child notification is-success" id="vgPlatformscontainer">
                             <p class="title">Platforms:</p>
                             <p class="subtitle" id="vgPlatforms"></p>
                         </article>
-                        <article class="tile notification has-background-grey-lighter" id="vgimgcontainer">
+                        <article data-aos="fade-up"
+                        data-aos-anchor-placement="center-bottom" class="tile notification has-background-grey-lighter" id="vgimgcontainer">
                             <div class="content">
                                 <div class="content" id="vgImages">
                                     <!-- Content -->
                                 </div>
                             </div>
                         </article>
-                        <article class="tile is-child notification is-primary">
+                        <article data-aos="zoom-out" class="tile is-child notification is-primary">
                             <p class="title"></p>
                             <p class="subtitle"></p>
-                            <div class="content ">
-                                <article class="tile is-child notification has-background-link" id="saveform">
+                            <div  class="content ">
+                                <article  class="tile is-child notification has-background-link" id="saveform">
                                     <p class="title"></p>
                                     <p class="subtitle"></p>
                                     <form>
@@ -87,18 +89,20 @@
                     </div>
                 </div>
             </section>
-            <section id="chartsection" class="column is-one-quarter tile is-ancestor pt-6 is-vertical">
+            <section id="chartsection" class="column is-one-quarter tile is-ancestor pt-6 is-vertical is-flex-mobile">
                 <div class="tile is-parent">
-                    <article class="tile is-child notification has-background-danger">
-                        <div class="content chartBox" id=" chartContent">
+                    <article class="tile is-child notification has-background-danger has-text-danger-light">
+                        <div data-aos="flip-left"
+                        data-aos-easing="ease-out-cubic"
+                        data-aos-duration="2000" class="content chartBox" id=" chartContent">
                             <p class="title">Comparable Ratings</p>
-                            <p>** hover over chart to get specific rating**</p>
+                            <p class="is-italic has-text-warning">** hover over chart to get specific rating**</p>
 
                             <canvas class=" notification has-background-grey-lighter" id="ratingChart" height="150"
                                 width="175"></canvas>
 
 
-                            <canvas class="notification has-background-grey-lighter" height="150" width="175"
+                            <canvas  class="notification has-background-grey-lighter" height="150" width="175"
                                 id="popChart"></canvas>
 
                             <p class="subtitle legendBox"></p>
@@ -119,7 +123,7 @@
     </main>
 
 </body>
-
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="./assets/js/script.js"></script>
 
