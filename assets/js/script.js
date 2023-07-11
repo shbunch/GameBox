@@ -15,8 +15,6 @@ function showModal(){
 function hideModal(){
     modalWindow.style.display = 'none';
 }
-var rawgAPIKey = "9291f496b0954cfd85fdd080b9cd538f";
-
 var input = document.getElementById('query');
 function searchBar(event){
     event.preventDefault();
@@ -57,7 +55,7 @@ function searchGame(inputVal) {
         })
         .then(function(ratingData){
             console.log(ratingData);
-
+          })});
 // Targeting Search button element
 var searchEl = document.querySelector("#SearchBtn")
 
@@ -65,7 +63,7 @@ var searchEl = document.querySelector("#SearchBtn")
 function searchGame(event) {
     event.preventDefault();
     // Collect user input for the game search and store it in a variable
-    var game = document.querySelector("#query").value
+    
     
     // TODO - Loop through fullGameList object and check for match with user input
 }
@@ -113,38 +111,56 @@ searchEl.addEventListener("click", searchGame);
   //   console.log(fullGameList);
   // });
 // }
-
 const ctx = document.getElementById("ratingChart");
-
 new Chart(ctx, {
-  type: "bar",
+  type: 'bar',
   data: {
-    labels: [
-      "chosen game",
-      "next best thing",
-      "Yellow",
-      "Green",
-      "Purple",
-      "Orange",
-    ],
-    datasets: [
-      {
-        label: "# of votes",
-        data: [19, 14, 3, 5, 2, 3],
-        borderWidth: 2,
-        borderColor: "#f0000080",
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      borderWidth: 1,
+      borderColor: "#f0000080",
         backgroundColor: "#fff",
-      },
-    ],
+    }]
   },
   options: {
     scales: {
       y: {
-        beginAtZero: true,
-      },
-    },
-  },
+        beginAtZero: true
+      }
+    }
+  }
 });
+
+// new Chart(ctx, {
+//   type: "bar",
+//   data: {
+//     labels: [
+//       "chosen game",
+//       "next best thing",
+//       "Yellow",
+//       "Green",
+//       "Purple",
+//       "Orange",
+//     ],
+//     datasets: [
+//       {
+//         label: "# of votes",
+//         data: [19, 14, 3, 5, 2, 3],
+//         borderWidth: 2,
+        
+//       },
+//     ],
+//   },
+//   options: {
+//     scales: {
+//       y: {
+//         beginAtZero: true,
+//       },
+//     },
+//   },
+// });
 
 
 
@@ -186,3 +202,4 @@ const chart = new Chart(ctx1, {
       }
   }
 )}
+
