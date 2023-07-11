@@ -1,3 +1,5 @@
+var rawgAPIKey = "afe2446d033e4b5197325726cd2f5fb8";
+var fullGameList = "https://api.rawg.io/api/games?key=" + rawgAPIKey;
 
 // ? Sample RAWG API links for reference
 // Full list of games - https://api.rawg.io/api/games?key=5e68bfa8ec8141a990c74c4ebefb01ea 
@@ -66,9 +68,141 @@ function searchGame(inputVal) {
                 .then(function (ratingData) {
                     console.log(ratingData);
 
+            var game1 = data.name;
+            var game2 = ratingData.results[1].name;
+            var game3 = ratingData.results[2].name;
+            var game4 = ratingData.results[3].name;
+            var game5 = ratingData.results[4].name;
 
-                })
-        });
+            var gameRating1 =data.rating;
+            var gameRating2 =ratingData.results[0].rating;
+            var gameRating3 =ratingData.results[1].rating;
+            var gameRating4 =ratingData.results[2].rating;
+            var gameRating5 =ratingData.results[3].rating;
+
+            const ctx = document.getElementById("ratingChart");
+// destroy chart code
+var chartStatus = Chart.getChart("ratingChart"); // <canvas> id
+if (chartStatus != undefined) {
+  chartStatus.destroy();
+}
+
+
+
+
+
+new Chart(ctx, {
+  type: "bar",
+  data: {
+    labels: [
+      game1,
+      game2,
+      game3,
+      game4,
+      game5,
+    ],
+    datasets: [
+      {
+        label: 'Rating',
+
+        
+        data: [gameRating1, gameRating2, gameRating3, gameRating4, gameRating5],
+        borderWidth: 2,
+        backgroundColor:'rgb(250, 6, 6)',
+      },
+    ],
+  },
+  options: {
+    animation:{
+      borderWidth: {
+        duration:1000,
+        easing:'linear',
+        to:1,
+        from:5,
+        loop:true,
+      }
+    },
+    animations:{
+      backgroundColor: {
+        type: 'color',
+        duration:1000,
+        easing:'linear',
+        to:'blue',
+        from:'red',
+        loop:true
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+   
+  },
+});
+
+
+
+const ctx1 = document.getElementById("popChart");
+
+// destroy chart code
+var chartStatus = Chart.getChart("popChart"); // <canvas> id
+if (chartStatus != undefined) {
+  chartStatus.destroy();
+}
+
+new Chart(ctx1, {
+  
+  type: 'line',
+  data: {
+    labels: [
+      game1,
+      game2,
+      game3,
+      game4,
+      game5,
+    ],
+    datasets: [
+      {
+        
+        label: 'Rating',
+        data: [gameRating1, gameRating2, gameRating3, gameRating4, gameRating5],
+        borderWidth: 5,
+        backgroundColor: 'rgb(250, 6, 6)',
+      },
+      
+    ],
+  },
+  options: {
+    animation: {
+      tension: {
+        duration: 1000,
+        easing: 'linear',
+        from: 1,
+        to: 2,
+        loop: true
+      },
+      backgroundColor: {
+        type: 'color',
+        duration:1000,
+        easing:'linear',
+        to:'blue',
+        from:'red',
+        loop:true
+      }
+    },
+   
+    scales: {
+      y: { // defining min and max so hiding the dataset does not change scale range
+        min: 0,
+        max: 5
+      }
+    }
+  }
+});
+
+    })
+    }); // TODO - Loop through fullGameList object and check for match with user input
 
 }
 
@@ -148,6 +282,3 @@ saveEl.addEventListener("click", function(event) {
 });
 
 
-
-// Calls init to retrieve data and render it to the page on load
-renderWishlist();
