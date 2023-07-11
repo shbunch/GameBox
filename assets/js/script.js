@@ -93,7 +93,7 @@ new Chart(ctx, {
     ],
     datasets: [
       {
-        label: game1,
+        label: 'Rating',
 
         
         data: [gameRating1, gameRating2, gameRating3, gameRating4, gameRating5],
@@ -154,8 +154,8 @@ new Chart(ctx1, {
     ],
     datasets: [
       {
-        label: game1,
         
+        label: 'Rating',
         data: [gameRating1, gameRating2, gameRating3, gameRating4, gameRating5],
         borderWidth: 5,
         backgroundColor: 'rgb(250, 6, 6)',
@@ -164,15 +164,24 @@ new Chart(ctx1, {
     ],
   },
   options: {
-    animations: {
+    animation: {
       tension: {
         duration: 1000,
         easing: 'linear',
         from: 1,
         to: 2,
         loop: true
+      },
+      backgroundColor: {
+        type: 'color',
+        duration:1000,
+        easing:'linear',
+        to:'blue',
+        from:'red',
+        loop:true
       }
     },
+   
     scales: {
       y: { // defining min and max so hiding the dataset does not change scale range
         min: 0,
