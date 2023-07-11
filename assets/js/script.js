@@ -15,7 +15,6 @@ function showModal(){
 function hideModal(){
     modalWindow.style.display = 'none';
 }
-var rawgAPIKey = "9291f496b0954cfd85fdd080b9cd538f";
 
 var input = document.getElementById('query');
 function searchBar(event){
