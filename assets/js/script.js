@@ -109,6 +109,7 @@ function searchGame(inputVal) {
       // game title/ release/ description
       var videoGameTitle = document.querySelector("#vgTitle");
       videoGameTitle.textContent = data.name;
+      // saveEl.setAttribute("data-game", data.name);
       var videoGameRelease = document.querySelector("#releaseDate");
       videoGameRelease.textContent = 'Released:' + data.released;
       var videoGameDescription = document.querySelector("#vgDescription");
