@@ -1,6 +1,8 @@
 var rawgAPIKey = "9291f496b0954cfd85fdd080b9cd538f";
 var fullGameList = "https://api.rawg.io/api/games?key=" + rawgAPIKey;
 
+  AOS.init();
+
 // ? Sample RAWG API links for reference
 // Full list of games - https://api.rawg.io/api/games?key=5e68bfa8ec8141a990c74c4ebefb01ea
 // Games list with filters - https://api.rawg.io/api/games?key=5e68bfa8ec8141a990c74c4ebefb01ea&dates=2019-09-01,2019-09-30&platforms=18,1,7
@@ -26,7 +28,7 @@ function searchBar(event) {
   event.preventDefault();
   var inputVal = input.value;
   searchGame(inputVal);
-  var videoGameContainerParent = document.getElementById('vgImages');
+  var videoGameContainerParent = document.getElementById("vgImages");
   videoGameContainerParent.innerHTML = "";
 }
 // List of games object on console log
@@ -93,137 +95,125 @@ function pageLoad() {
           var game4 = pageLoadRatingData.results[3].name;
           var game5 = pageLoadRatingData.results[4].name;
 
-          var gameRating1 =pageLoadData.rating;
-          var gameRating2 =pageLoadRatingData.results[0].rating;
-          var gameRating3 =pageLoadRatingData.results[1].rating;
-          var gameRating4 =pageLoadRatingData.results[2].rating;
-          var gameRating5 =pageLoadRatingData.results[3].rating;
+          var gameRating1 = pageLoadData.rating;
+          var gameRating2 = pageLoadRatingData.results[0].rating;
+          var gameRating3 = pageLoadRatingData.results[1].rating;
+          var gameRating4 = pageLoadRatingData.results[2].rating;
+          var gameRating5 = pageLoadRatingData.results[3].rating;
 
           const ctx = document.getElementById("ratingChart");
-// destroy chart code
-var chartStatus = Chart.getChart("ratingChart"); // <canvas> id
-if (chartStatus != undefined) {
-chartStatus.destroy();
-}
+          // destroy chart code
+          var chartStatus = Chart.getChart("ratingChart"); // <canvas> id
+          if (chartStatus != undefined) {
+            chartStatus.destroy();
+          }
 
+          new Chart(ctx, {
+            type: "bar",
+            data: {
+              labels: [game1, game2, game3, game4, game5],
+              datasets: [
+                {
+                  label: "Rating",
 
+                  data: [
+                    gameRating1,
+                    gameRating2,
+                    gameRating3,
+                    gameRating4,
+                    gameRating5,
+                  ],
+                  borderWidth: 2,
+                  backgroundColor: "rgb(250, 6, 6)",
+                },
+              ],
+            },
+            options: {
+              animation: {
+                borderWidth: {
+                  duration: 1000,
+                  easing: "linear",
+                  to: 1,
+                  from: 5,
+                  loop: true,
+                },
+              },
+              animations: {
+                backgroundColor: {
+                  type: "color",
+                  duration: 1000,
+                  easing: "linear",
+                  to: "blue",
+                  from: "red",
+                  loop: true,
+                },
+              },
+              scales: {
+                y: {
+                  beginAtZero: true,
+                },
+              },
+            },
+          });
 
+          const ctx1 = document.getElementById("popChart");
 
+          // destroy chart code
+          var chartStatus = Chart.getChart("popChart"); // <canvas> id
+          if (chartStatus != undefined) {
+            chartStatus.destroy();
+          }
 
-new Chart(ctx, {
-type: "bar",
-data: {
-  labels: [
-    game1,
-    game2,
-    game3,
-    game4,
-    game5,
-  ],
-  datasets: [
-    {
-      label: 'Rating',
+          new Chart(ctx1, {
+            type: "line",
+            data: {
+              labels: [game1, game2, game3, game4, game5],
+              datasets: [
+                {
+                  label: "Rating",
+                  data: [
+                    gameRating1,
+                    gameRating2,
+                    gameRating3,
+                    gameRating4,
+                    gameRating5,
+                  ],
+                  borderWidth: 5,
+                  backgroundColor: "rgb(250, 6, 6)",
+                },
+              ],
+            },
+            options: {
+              animation: {
+                tension: {
+                  duration: 1000,
+                  easing: "linear",
+                  from: 1,
+                  to: 2,
+                  loop: true,
+                },
+                backgroundColor: {
+                  type: "color",
+                  duration: 1000,
+                  easing: "linear",
+                  to: "blue",
+                  from: "red",
+                  loop: true,
+                },
+              },
 
-      
-      data: [gameRating1, gameRating2, gameRating3, gameRating4, gameRating5],
-      borderWidth: 2,
-      backgroundColor:'rgb(250, 6, 6)',
-    },
-  ],
-},
-options: {
-  animation:{
-    borderWidth: {
-      duration:1000,
-      easing:'linear',
-      to:1,
-      from:5,
-      loop:true,
-    }
-  },
-  animations:{
-    backgroundColor: {
-      type: 'color',
-      duration:1000,
-      easing:'linear',
-      to:'blue',
-      from:'red',
-      loop:true
-    }
-  },
-  scales: {
-    y: {
-      beginAtZero: true,
-    },
-  },
- 
-},
-});
-
-
-
-const ctx1 = document.getElementById("popChart");
-
-// destroy chart code
-var chartStatus = Chart.getChart("popChart"); // <canvas> id
-if (chartStatus != undefined) {
-chartStatus.destroy();
-}
-
-new Chart(ctx1, {
-
-type: 'line',
-data: {
-  labels: [
-    game1,
-    game2,
-    game3,
-    game4,
-    game5,
-  ],
-  datasets: [
-    {
-      
-      label: 'Rating',
-      data: [gameRating1, gameRating2, gameRating3, gameRating4, gameRating5],
-      borderWidth: 5,
-      backgroundColor: 'rgb(250, 6, 6)',
-    },
-    
-  ],
-},
-options: {
-  animation: {
-    tension: {
-      duration: 1000,
-      easing: 'linear',
-      from: 1,
-      to: 2,
-      loop: true
-    },
-    backgroundColor: {
-      type: 'color',
-      duration:1000,
-      easing:'linear',
-      to:'blue',
-      from:'red',
-      loop:true
-    }
-  },
- 
-  scales: {
-    y: { // defining min and max so hiding the dataset does not change scale range
-      min: 0,
-      max: 5
-    }
-  }
-}
-});
+              scales: {
+                y: {
+                  // defining min and max so hiding the dataset does not change scale range
+                  min: 0,
+                  max: 5,
+                },
+              },
+            },
+          });
         });
     });
-        };
-    ;
-
+}
 // Targeting Search button element
 var searchEl = document.querySelector("#SearchBtn");
 
@@ -250,16 +240,16 @@ function searchGame(inputVal) {
       // game title/ release/ description
       var videoGameTitle = document.querySelector("#vgTitle");
       videoGameTitle.textContent = data.name;
-      saveEl.setAttribute("data-game", data.name)
+      saveEl.setAttribute("data-game", data.name);
       var videoGameRelease = document.querySelector("#releaseDate");
-      videoGameRelease.textContent = 'Released:' + data.released;
+      videoGameRelease.textContent = "Released:" + data.released;
       var videoGameDescription = document.querySelector("#vgDescription");
       videoGameDescription.textContent = data.description_raw;
       // rating
       var videoGameRating = document.querySelector("#vgRating");
       videoGameRating.textContent = data.esrb_rating.name;
       if (data.esrb_rating.name === null) {
-        videoGameRating.textContent = '';
+        videoGameRating.textContent = "";
       }
       // platforms
       var videoGamePlatforms = document.querySelector("#vgPlatforms");
@@ -321,21 +311,20 @@ function searchGame(inputVal) {
           new Chart(ctx, {
             type: "bar",
             data: {
-              labels: [
-                game1,
-                game2,
-                game3,
-                game4,
-                game5,
-              ],
+              labels: [game1, game2, game3, game4, game5],
               datasets: [
                 {
-                  label: 'Rating',
+                  label: "Rating",
 
-
-                  data: [gameRating1, gameRating2, gameRating3, gameRating4, gameRating5],
+                  data: [
+                    gameRating1,
+                    gameRating2,
+                    gameRating3,
+                    gameRating4,
+                    gameRating5,
+                  ],
                   borderWidth: 2,
-                  backgroundColor: 'rgb(250, 6, 6)',
+                  backgroundColor: "rgb(250, 6, 6)",
                 },
               ],
             },
@@ -343,28 +332,27 @@ function searchGame(inputVal) {
               animation: {
                 borderWidth: {
                   duration: 1000,
-                  easing: 'linear',
+                  easing: "linear",
                   to: 1,
                   from: 5,
                   loop: true,
-                }
+                },
               },
               animations: {
                 backgroundColor: {
-                  type: 'color',
+                  type: "color",
                   duration: 1000,
-                  easing: 'linear',
-                  to: 'blue',
-                  from: 'red',
-                  loop: true
-                }
+                  easing: "linear",
+                  to: "blue",
+                  from: "red",
+                  loop: true,
+                },
               },
               scales: {
                 y: {
                   beginAtZero: true,
                 },
               },
-
             },
           });
 
@@ -377,63 +365,60 @@ function searchGame(inputVal) {
           }
 
           new Chart(ctx1, {
-
-            type: 'line',
+            type: "line",
             data: {
-              labels: [
-                game1,
-                game2,
-                game3,
-                game4,
-                game5,
-              ],
+              labels: [game1, game2, game3, game4, game5],
               datasets: [
                 {
-
-                  label: 'Rating',
-                  data: [gameRating1, gameRating2, gameRating3, gameRating4, gameRating5],
+                  label: "Rating",
+                  data: [
+                    gameRating1,
+                    gameRating2,
+                    gameRating3,
+                    gameRating4,
+                    gameRating5,
+                  ],
                   borderWidth: 5,
-                  backgroundColor: 'rgb(250, 6, 6)',
+                  backgroundColor: "rgb(250, 6, 6)",
                 },
-
               ],
             },
             options: {
               animation: {
                 tension: {
                   duration: 1000,
-                  easing: 'linear',
+                  easing: "linear",
                   from: 1,
                   to: 2,
-                  loop: true
+                  loop: true,
                 },
                 backgroundColor: {
-                  type: 'color',
+                  type: "color",
                   duration: 1000,
-                  easing: 'linear',
-                  to: 'blue',
-                  from: 'red',
-                  loop: true
-                }
+                  easing: "linear",
+                  to: "blue",
+                  from: "red",
+                  loop: true,
+                },
               },
 
               scales: {
-                y: { // defining min and max so hiding the dataset does not change scale range
+                y: {
+                  // defining min and max so hiding the dataset does not change scale range
                   min: 0,
-                  max: 5
-                }
-              }
-            }
-          })
-        }
-      )
-    })
+                  max: 5,
+                },
+              },
+            },
+          });
+        });
+    });
 }
 // The following function renders items in a todo list as <li> elements
 function renderWishlist() {
   // Clear wishlist element and update wishlist count
   wishlist.innerHTML = "";
-  var wishlistArray = JSON.parse(localStorage.getItem("wishlist")) || []
+  var wishlistArray = JSON.parse(localStorage.getItem("wishlist")) || [];
   wishlistCount.textContent = wishlistArray.length;
 
   // Render a new li for each wishlist item
@@ -453,12 +438,12 @@ function renderWishlist() {
     // .class.add bulma css class here
     removeButton.dataset.game = wishlistGame;
     removeButton.addEventListener("click", function (event) {
-      var gameTitle = event.target.getAttribute("data-game")
-      var wishlistArray = JSON.parse(localStorage.getItem("wishlist")) || []
+      var gameTitle = event.target.getAttribute("data-game");
+      var wishlistArray = JSON.parse(localStorage.getItem("wishlist")) || [];
       var updatedWishlist = wishlistArray.filter(function (game) {
-        return game !== gameTitle
-      })
-      localStorage.setItem("wishlist", JSON.stringify(updatedWishlist))
+        return game !== gameTitle;
+      });
+      localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
       renderWishlist();
     })
     removeButton.addEventListener("mouseover", function(event){
@@ -492,14 +477,13 @@ function init() {
 
 function storeWishlist(game) {
   // Stringify and set key in localStorage to wishlist array
-  var wishlistItems = JSON.parse(localStorage.getItem("wishlist")) || []
+  var wishlistItems = JSON.parse(localStorage.getItem("wishlist")) || [];
   if (!wishlistItems.includes(game)) {
-    wishlistItems.push(game)
-    localStorage.setItem("wishlist", JSON.stringify(wishlistItems))
-    renderWishlist()
+    wishlistItems.push(game);
+    localStorage.setItem("wishlist", JSON.stringify(wishlistItems));
+    renderWishlist();
   }
 }
-
 
 // Have the button only show up when the search is run
 
@@ -508,9 +492,7 @@ searchEl.addEventListener("click", searchBar);
 saveEl.addEventListener("click", function (event) {
   event.preventDefault();
 
-  var wishlistText = event.target.getAttribute("data-game")
+  var wishlistText = event.target.getAttribute("data-game");
   console.log(wishlistText);
-  storeWishlist(wishlistText)
+  storeWishlist(wishlistText);
 });
-
-
