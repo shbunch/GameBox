@@ -16,6 +16,8 @@ function hideModal() {
 var rawgAPIKey = "9291f496b0954cfd85fdd080b9cd538f";
 var saveEl = document.getElementById("saveBtn");
 var input = document.getElementById("query");
+var wishlist = document.getElementById("wishlist-id");
+var wishlistCount = document.getElementById("wishlist-count");
 function searchBar(event) {
   event.preventDefault();
   var inputVal = input.value;
@@ -109,6 +111,7 @@ function searchGame(inputVal) {
       // game title/ release/ description
       var videoGameTitle = document.querySelector("#vgTitle");
       videoGameTitle.textContent = data.name;
+      saveEl.setAttribute("data-game", data.name)
       var videoGameRelease = document.querySelector("#releaseDate");
       videoGameRelease.textContent = 'Released:' + data.released;
       var videoGameDescription = document.querySelector("#vgDescription");
@@ -354,6 +357,7 @@ saveEl.addEventListener("click", function (event) {
   event.preventDefault();
 
   var wishlistText = event.target.getAttribute("data-game")
+  console.log(wishlistText);
   storeWishlist(wishlistText)
 });
 
