@@ -2,7 +2,7 @@ var rawgAPIKey = "afe2446d033e4b5197325726cd2f5fb8";
 var fullGameList = "https://api.rawg.io/api/games?key=" + rawgAPIKey;
 
 // ? Sample RAWG API links for reference
-// Full list of games - https://api.rawg.io/api/games?key=5e68bfa8ec8141a990c74c4ebefb01ea
+// Full list of games - https://api.rawg.io/api/games?key=5e68bfa8ec8141a990c74c4ebefb01ea 
 // Games list with filters - https://api.rawg.io/api/games?key=5e68bfa8ec8141a990c74c4ebefb01ea&dates=2019-09-01,2019-09-30&platforms=18,1,7
 // Borderlands 3 game details - https://api.rawg.io/api/games/borderlands-3?key=5e68bfa8ec8141a990c74c4ebefb01ea
 // how to get the rawg genres on for the chart data -> 
@@ -15,6 +15,8 @@ function showModal(){
 function hideModal(){
     modalWindow.style.display = 'none';
 }
+var rawgAPIKey = "9291f496b0954cfd85fdd080b9cd538f";
+
 var input = document.getElementById('query');
 function searchBar(event){
     event.preventDefault();
@@ -22,7 +24,7 @@ function searchBar(event){
     searchGame(inputVal);
 }
 // List of games object on console log
-       
+
 // Targeting Search button element
 var searchEl = document.querySelector("#SearchBtn")
 
@@ -55,21 +57,135 @@ function searchGame(inputVal) {
         })
         .then(function(ratingData){
             console.log(ratingData);
-          })});
-// Targeting Search button element
-var searchEl = document.querySelector("#SearchBtn")
 
-//! Code that runs when Search button is pressed (almost all code should go here)
-function searchGame(event) {
-    event.preventDefault();
-    // Collect user input for the game search and store it in a variable
-    
-    
-    // TODO - Loop through fullGameList object and check for match with user input
+            var game1 = data.name;
+            var game2 = ratingData.results[1].name;
+            var game3 = ratingData.results[2].name;
+            var game4 = ratingData.results[3].name;
+            var game5 = ratingData.results[4].name;
+
+            var gameRating1 =data.rating;
+            var gameRating2 =ratingData.results[0].rating;
+            var gameRating3 =ratingData.results[1].rating;
+            var gameRating4 =ratingData.results[2].rating;
+            var gameRating5 =ratingData.results[3].rating;
+
+            const ctx = document.getElementById("ratingChart");
+// destroy chart code
+var chartStatus = Chart.getChart("ratingChart"); // <canvas> id
+if (chartStatus != undefined) {
+  chartStatus.destroy();
 }
 
+
+
+
+
+new Chart(ctx, {
+  type: "bar",
+  data: {
+    labels: [
+      game1,
+      game2,
+      game3,
+      game4,
+      game5,
+    ],
+    datasets: [
+      {
+        label: "# of votes",
+        data: [gameRating1, gameRating2, gameRating3, gameRating4, gameRating5],
+        borderWidth: 2,
+        backgroundColor:'rgb(250, 6, 6)',
+      },
+    ],
+  },
+  options: {
+    animations:{
+      borderWidth: {
+        duration:1000,
+        easing:'linear',
+        to:1,
+        from:10,
+        loop:true,
+      }
+    },
+    animations:{
+      backgroundColor: {
+        type: 'color',
+        duration:1000,
+        easing:'linear',
+        to:'blue',
+        from:'red',
+        loop:true
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+   
+  },
+});
+
+
+
+const ctx1 = document.getElementById("popChart");
+
+// destroy chart code
+var chartStatus = Chart.getChart("popChart"); // <canvas> id
+if (chartStatus != undefined) {
+  chartStatus.destroy();
+}
+
+new Chart(ctx1, {
+  
+  type: 'line',
+  data: {
+    labels: [
+      game1,
+      game2,
+      game3,
+      game4,
+      game5,
+    ],
+    datasets: [
+      {
+        label: "# of votes",
+        data: [gameRating1, gameRating2, gameRating3, gameRating4, gameRating5],
+        borderWidth: 2,
+        backgroundColor: 'rgb(250, 6, 6)',
+      },
+    ],
+  },
+  options: {
+    animations: {
+      tension: {
+        duration: 800,
+        easing: 'linear',
+        from: 1,
+        to: 5,
+        loop: true
+      }
+    },
+    scales: {
+      y: { // defining min and max so hiding the dataset does not change scale range
+        min: 0,
+        max: 5
+      }
+    }
+  }
+});
+
+    })
+    }); // TODO - Loop through fullGameList object and check for match with user input
+
+}
+
+
 // Add event listener to Search button element
-searchEl.addEventListener("click", searchGame);
+searchEl.addEventListener("click", searchBar);
 
 // var input = document.getElementById("query");
 
@@ -111,95 +227,7 @@ searchEl.addEventListener("click", searchGame);
   //   console.log(fullGameList);
   // });
 // }
-const ctx = document.getElementById("ratingChart");
-new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      borderWidth: 1,
-      borderColor: "#f0000080",
-        backgroundColor: "#fff",
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
-});
-
-// new Chart(ctx, {
-//   type: "bar",
-//   data: {
-//     labels: [
-//       "chosen game",
-//       "next best thing",
-//       "Yellow",
-//       "Green",
-//       "Purple",
-//       "Orange",
-//     ],
-//     datasets: [
-//       {
-//         label: "# of votes",
-//         data: [19, 14, 3, 5, 2, 3],
-//         borderWidth: 2,
-        
-//       },
-//     ],
-//   },
-//   options: {
-//     scales: {
-//       y: {
-//         beginAtZero: true,
-//       },
-//     },
-//   },
-// });
 
 
 
-const ctx1 = document.getElementById("popChart");
-
-const chart = new Chart(ctx1, {
-  type: 'line',
-  data: {
-        labels: [
-          "chosen game",
-          "next best thing",
-          "Yellow",
-          "Green",
-          "Purple",
-          "Orange",
-        ],
-    datasets: [
-            {
-              label: "# of votes",
-              data: [19, 14, 3, 5, 2, 3],
-              borderWidth: 2,
-              borderColor: "#f0000080",
-              backgroundColor: "#fff",
-            },
-          ],
-        },
-      options: {
-            scales: {
-              y: {
-                beginAtZero: true,
-              },
-            },
-          },
-      
-      animation: {
-          onProgress: function(animation) {
-              progress.value = animation.currentStep / animation.numSteps;
-          }
-      }
-  }
-)}
 
