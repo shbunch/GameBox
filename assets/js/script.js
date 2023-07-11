@@ -40,6 +40,7 @@ function pageLoad() {
     .then(function (pageLoadData) {
       console.log(pageLoadData);
       var videoGameTitle = document.querySelector("#vgTitle");
+      saveEl.setAttribute("data-game", pageLoadData.name);
       var videoGameDesc = document.querySelector("#vgDescription");
       var videoGameDate = document.querySelector("#releaseDate");
       var videoGameRating = document.querySelector("#vgRating");
