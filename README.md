@@ -13,7 +13,7 @@ Our goal for this application was to make a user experience that allows navigati
 
 ## Installation
 
-N/A
+https://shbunch.github.io/GameBox/
 
 ## Usage
 
